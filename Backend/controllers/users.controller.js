@@ -22,4 +22,25 @@ const registerUser = async (req, res) => {
   }
 };
 
-module.exports = { registerUser };
+const getAllUsers = async (req, res) => {
+    try {
+        console.log("Fetching all users...");
+        const userResult = await UserServiceInstance.findAll();
+        if (userResult) {
+          console.log("Users found:", userResult);
+          res.json(userResult);
+        } else {
+          console.log("No users found");
+          res.status(404).json({ message: "No Users found" });
+        }
+      } catch (error) {
+        console.error("Error occurred while fetching user details:", error);
+        res.status(500).json({ message: "Error fetching user details", error });
+      }
+  }
+
+module.exports = {
+     registerUser,
+     getAllUsers,
+    
+    };
