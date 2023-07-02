@@ -18,15 +18,14 @@ class UserService {
 
   findAll = async () => {
     try {
-      console.log("Finding all users...");
+      //   console.log("Finding all users...");
       const userResult = await Users.find({});
-      console.log("Users found:", userResult);
+      //   console.log("Users found:", userResult);
       return userResult;
     } catch (error) {
-      console.error("Error occurred while finding users:", error);
+      //   console.error("Error occurred while finding users:", error);
       throw error;
     }
   };
 }
-
 module.exports = UserService;
