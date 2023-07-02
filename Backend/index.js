@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require('mongoose');
 const app = express();
 const PORT = process.env.PORT;
+const blogRoutes = require('./routes/blogs.routes')
 
 const DB_URI = process.env.DB_URI;
 mongoose
@@ -12,6 +13,7 @@ mongoose
 
 app.use(express.json())
 
+app.use('/blogs', blogRoutes)
 
 app.listen(PORT, () => {
   console.log(`Started to listen on PORT: ${PORT}`);
