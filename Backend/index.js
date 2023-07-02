@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const app = express();
 const PORT = process.env.PORT;
 const blogRoutes = require('./routes/blogs.routes')
+const userRouter = require('./routes/users.routes')
 
 const DB_URI = process.env.DB_URI;
 mongoose
@@ -13,6 +14,7 @@ mongoose
 
 app.use(express.json())
 
+app.use('/user', userRouter)
 app.use('/blogs', blogRoutes)
 
 app.listen(PORT, () => {
